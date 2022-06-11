@@ -1,6 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
+﻿#nullable disable
 
 using System;
 using System.Collections.Generic;
@@ -45,58 +43,70 @@ namespace AMMM.Ganzer.App.Areas.Identity.Pages.Account
             _emailSender = emailSender;
         }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
+
         [BindProperty]
         public InputModel Input { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
         public string ReturnUrl { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
+
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        /// <summary>
-        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-        ///     directly from your code. This API may change or be removed in future releases.
-        /// </summary>
+
         public class InputModel
         {
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "البريد الاكتروني")]
             public string Email { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "كلمة المرور")]
             public string Password { get; set; }
 
-            /// <summary>
-            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
-            ///     directly from your code. This API may change or be removed in future releases.
-            /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "تأكيد كلمة المرور")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+            
+            [Required]
+            [Display(Name = "الاسم")]
+            public string Name { get; set; }
+
+            [Required]
+            [Display(Name = "تاريخ الميلاد")]
+            public string BirthDate { get; set; }
+
+            [Required]
+            [Display(Name = "المحافظة")]
+            public string Governate { get; set; }
+
+            [Required]
+            [Display(Name = "منطقة السكن")]
+            public string District { get; set; }
+
+            [Required]
+            [Display(Name = "مستوي اللياقة البدنية الحالي (مقارنة بباقي الجروب)")]
+            public string FitnessLevel { get; set; }
+
+            [Required]
+            [Display(Name = "رقم التلفون")]
+            public string PhoneNumber { get; set; }
+
+            [Required]
+            [Display(Name = "رقم تلفون الطوارئ")]
+            public string EmergencyPhone { get; set; }
+
+            [Required]
+            [Display(Name = "بتركب عجل بانظام من امتي")]
+            public string DateOfRidingBike { get; set; }
+
+            [Required]
+            [Display(Name = "تاريخ الانضمام لخوذة وجنزير")]
+            public string DateOfJoiningTheGroup { get; set; }
+
         }
 
 
