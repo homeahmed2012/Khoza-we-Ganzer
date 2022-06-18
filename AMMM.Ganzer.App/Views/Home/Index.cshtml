@@ -3,6 +3,15 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <img src="~/img/logo.jpg"/>
+    <h1 class="display-4">مرحبا بك فى موقع خوذة وجنزير</h1>
+    <br />
+    <div>
+        <button type="button" class="btn btn-primary" onclick='window.location.href = "/Identity/Account/Login"'>تسجيل الدخول</button>
+        <button type="button" class="btn btn-primary" onclick='window.location.href = "/Identity/Account/Register"'>تسجيل مستخدم جديد</button>
+    </div>
 </div>
+
+@section Scripts
+{
+}

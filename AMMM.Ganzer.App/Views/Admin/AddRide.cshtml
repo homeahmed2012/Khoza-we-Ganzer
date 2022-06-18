@@ -1,0 +1,97 @@
+﻿@model AMMM.Ganzer.App.ViewModels.AddRideViewModel
+@using AMMM.Ganzer.App.Helpers
+@{
+    ViewData["Title"] = "اضافة رايد";
+}
+
+<h1>اضافة رايد</h1>
+
+<hr />
+
+<form asp-action="AddRide">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RideType" class="control-label"></label>
+                <select asp-for="RideType" class="form-control" asp-items="Html.GetEnumSelectList<RideType>()" aria-required="true"></select>
+                <span asp-validation-for="RideType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RideDate" class="control-label"></label>
+                <input asp-for="RideDate" class="form-control" type="date"/>
+                <span asp-validation-for="RideDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RideTime" class="control-label"></label>
+                <input asp-for="RideTime" class="form-control" type="time"/>
+                <span asp-validation-for="RideTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Distance" class="control-label"></label>
+                <input asp-for="Distance" class="form-control" />
+                <span asp-validation-for="Distance" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="GatheringPoint" class="control-label"></label>
+                <input asp-for="GatheringPoint" class="form-control" />
+                <span asp-validation-for="GatheringPoint" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Distenation" class="control-label"></label>
+                <input asp-for="Distenation" class="form-control" />
+                <span asp-validation-for="Distenation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Temperature" class="control-label"></label>
+                <input asp-for="Temperature" class="form-control" />
+                <span asp-validation-for="Temperature" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WindDirection" class="control-label"></label>
+                <input asp-for="WindDirection" class="form-control" />
+                <span asp-validation-for="WindDirection" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WindIntensity" class="control-label"></label>
+                <select asp-for="WindIntensity" class="form-control" asp-items="Html.GetEnumSelectList<Intensity>()">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="WindIntensity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rain" class="control-label"></label>
+                <select asp-for="Rain" class="form-control" asp-items="Html.GetEnumSelectList<Intensity>()">
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="Rain" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="اضافة" class="btn btn-primary" />
+    </div>
+</form>
+
+
+<div>
+    <a asp-action="Index">رجوع</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

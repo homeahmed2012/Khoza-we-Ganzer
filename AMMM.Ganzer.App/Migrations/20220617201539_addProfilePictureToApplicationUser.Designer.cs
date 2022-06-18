@@ -3,6 +3,7 @@ using System;
 using AMMM.Ganzer.App.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AMMM.Ganzer.App.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220617201539_addProfilePictureToApplicationUser")]
+    partial class addProfilePictureToApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,78 +120,6 @@ namespace AMMM.Ganzer.App.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-                });
-
-            modelBuilder.Entity("AMMM.Ganzer.App.Models.Ride", b =>
-                {
-                    b.Property<int>("RideID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RideID"));
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(300)
-                        .HasColumnType("character varying(300)");
-
-                    b.Property<int>("Distance")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Distenation")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("GatheringPoint")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("character varying(150)");
-
-                    b.Property<int?>("Rain")
-                        .HasColumnType("integer");
-
-                    b.Property<DateOnly>("RideDate")
-                        .HasColumnType("date");
-
-                    b.Property<TimeOnly>("RideTime")
-                        .HasColumnType("time without time zone");
-
-                    b.Property<int>("RideType")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Temperature")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("WindDirection")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("WindIntensity")
-                        .HasColumnType("integer");
-
-                    b.HasKey("RideID");
-
-                    b.ToTable("Rides");
-                });
-
-            modelBuilder.Entity("ApplicationUserRide", b =>
-                {
-                    b.Property<string>("ApplicationUsersId")
-                        .HasColumnType("text");
-
-                    b.Property<int>("RidesRideID")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ApplicationUsersId", "RidesRideID");
-
-                    b.HasIndex("RidesRideID");
-
-                    b.ToTable("ApplicationUserRide");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -326,21 +256,6 @@ namespace AMMM.Ganzer.App.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ApplicationUserRide", b =>
-                {
-                    b.HasOne("AMMM.Ganzer.App.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("ApplicationUsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AMMM.Ganzer.App.Models.Ride", null)
-                        .WithMany()
-                        .HasForeignKey("RidesRideID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

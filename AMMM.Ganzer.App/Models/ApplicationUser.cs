@@ -32,5 +32,9 @@ namespace AMMM.Ganzer.App.Models
         [Required]
         public int Points { get; set; }
 
+        public string? ProfilePicture { get; set; }
+
+
+        public virtual ICollection<Ride> Rides { get; set; }
     }
 }

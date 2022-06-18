@@ -8,7 +8,8 @@ namespace AMMM.Ganzer.App.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
-        {
-        }
+        { }
+
+        public DbSet<Ride> Rides { get; set; }
     }
 }

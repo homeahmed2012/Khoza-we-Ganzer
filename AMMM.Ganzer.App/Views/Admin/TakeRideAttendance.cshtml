@@ -1,0 +1,89 @@
+﻿@model IEnumerable<AMMM.Ganzer.App.ViewModels.AttendeesViewModel>
+
+@{
+    ViewData["Title"] = "الحضور";
+}
+<br />
+<h1>@ViewData["Title"]</h1>
+<br />
+
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                الاسم
+            </th>
+            <th>
+                الموبايل
+            </th>
+            <th>
+                الايميل
+            </th>
+            <th>
+                حضور
+            </th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Phone
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @if (item.Attend)
+                    {
+                        <button class="btn btn-secondary" disabled>اضافة</button>
+                    }
+                    else
+                    {
+                        <button id="addBtn-@item.UserId" class="btn btn-primary" onclick="addUserToRide('@item.UserId')">اضافة</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+
+        function addUserToRide(userId){
+            $.ajax({
+                url: "/admin/AddUserToRide?userId=" + userId + "&rideId=" + @ViewBag.rideId,
+                success: function(result){
+                    var success = JSON.parse(result).attend
+                    if (success) {
+                        var btn = $("#addBtn-" + userId);
+                        btn.prop('disabled', true);
+                    }
+                },
+                error: function() {
+
+                }
+            });
+            
+        }
+    </script>
+
+}
+

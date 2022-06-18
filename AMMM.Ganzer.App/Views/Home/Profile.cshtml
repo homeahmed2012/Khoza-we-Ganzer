@@ -1,0 +1,26 @@
+﻿@using AMMM.Ganzer.App.Helpers
+@model ApplicationUser
+@{
+    ViewData["Title"] = "Home Page";
+    var governate = ((Governate)Model.Governorate).GetDisplayName();
+    var fitnesslevel = ((FitnessLevel)Model.FitnessLevel).GetDisplayName();
+}
+
+<br /> <br /> <br /> <br />
+
+<div class="card profile-card">
+  <div class="card-body">
+    <img class="profile-picture" src="~/img/@Model.ProfilePicture"/>
+    <h5 class="card-title" style="color: orange">ملك الطريق</h5>
+    <h6>الأسم: @Model.Name</h6>
+    <p class="card-text">النقط: @Model.Points</p>
+    <p class="card-text">المحافظة: @governate</p>
+    <p class="card-text">مستوي اللياقة: @fitnesslevel</p>
+    <p class="card-text">تاريخ ركوب العجل: @Model.DateOfRidingBike.ToString("dd/MM/yyyy")</p>
+    <p class="card-text">تاريخ الانضمام للجروب: @Model.DateOfJoiningTheGroup.ToString("dd/MM/yyyy")</p>
+    <span class="badge bg-primary">فاعل خير</span>
+    <span class="badge bg-secondary">رحال</span>
+    <span class="badge bg-success">قمة الجدعنة</span>
+    <span class="badge bg-danger">قدوة</span>
+  </div>
+</div>

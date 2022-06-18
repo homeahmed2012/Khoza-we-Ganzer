@@ -3,6 +3,7 @@ using System;
 using AMMM.Ganzer.App.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AMMM.Ganzer.App.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220630221116_addRidesTable")]
+    partial class addRidesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -177,21 +179,6 @@ namespace AMMM.Ganzer.App.Migrations
                     b.ToTable("Rides");
                 });
 
-            modelBuilder.Entity("ApplicationUserRide", b =>
-                {
-                    b.Property<string>("ApplicationUsersId")
-                        .HasColumnType("text");
-
-                    b.Property<int>("RidesRideID")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ApplicationUsersId", "RidesRideID");
-
-                    b.HasIndex("RidesRideID");
-
-                    b.ToTable("ApplicationUserRide");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -326,21 +313,6 @@ namespace AMMM.Ganzer.App.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ApplicationUserRide", b =>
-                {
-                    b.HasOne("AMMM.Ganzer.App.Models.ApplicationUser", null)
-                        .WithMany()
-                        .HasForeignKey("ApplicationUsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AMMM.Ganzer.App.Models.Ride", null)
-                        .WithMany()
-                        .HasForeignKey("RidesRideID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
