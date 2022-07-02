@@ -152,8 +152,8 @@ namespace AMMM.Ganzer.App.Areas.Identity.Pages.Account
 
                     //var res1 = await _roleManager.CreateAsync(adminRole);
                     //var res2 = await _userManager.AddToRoleAsync(user, "Admin");
-                    
-                    
+
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
 

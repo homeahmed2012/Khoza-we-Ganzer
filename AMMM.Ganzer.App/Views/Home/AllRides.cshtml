@@ -1,0 +1,59 @@
+﻿@using AMMM.Ganzer.App.Helpers
+@model IEnumerable<AMMM.Ganzer.App.Models.Ride>
+
+@{
+    ViewData["Title"] = "الرايدات";
+}
+<br />
+<h1>@ViewData["Title"]</h1>
+<br />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                الاسم
+            </th>
+            <th>
+                النوع
+            </th>
+            <th>
+                التاريخ
+            </th>
+            <th>
+                المسافة
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.RideID
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @(((RideType)item.RideType).GetDisplayName())
+                </td>
+                <td>
+                    @item.RideDate.ToString()
+                </td>
+                <td>
+                    @item.Distance
+                </td>
+                @*<td>
+                    <a asp-action="Details" asp-route-id="@item.RideID">Details</a> |
+                    
+                    <a asp-action="TakeRideAttendance" asp-route-rideId="@item.RideID">Attendance</a>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

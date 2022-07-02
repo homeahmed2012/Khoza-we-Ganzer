@@ -73,8 +73,7 @@ namespace AMMM.Ganzer.App.Areas.Identity.Pages.Account
                     _logger.LogInformation("User logged in.");
                     if (string.IsNullOrEmpty(returnUrl))
                     {
-                        var userId = _userManager.FindByNameAsync(Input.Email)?.Result.Id;
-                        return RedirectToAction("Profile", "Home",new { userId = userId});
+                        return RedirectToAction("Index", "Home");
                     }
                     return LocalRedirect(returnUrl);
                 }

@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace AMMM.Ganzer.App.Controllers
 {
-    //[Authorize(Roles ="admin")]
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         private ApplicationDbContext _dbContext;
