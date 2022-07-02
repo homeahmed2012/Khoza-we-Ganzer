@@ -145,13 +145,13 @@ namespace AMMM.Ganzer.App.Areas.Identity.Pages.Account
                     _logger.LogInformation("User created a new account with password.");
 
 
-                    var adminRole = new IdentityRole
-                    {
-                        Name = "Admin"
-                    };
+                    //var adminRole = new IdentityRole
+                    //{
+                    //    Name = "Admin"
+                    //};
 
-                    var res1 = await _roleManager.CreateAsync(adminRole);
-                    var res2 = await _userManager.AddToRoleAsync(user, "Admin");
+                    //var res1 = await _roleManager.CreateAsync(adminRole);
+                    //var res2 = await _userManager.AddToRoleAsync(user, "Admin");
                     
                     
                     await _signInManager.SignInAsync(user, isPersistent: false);

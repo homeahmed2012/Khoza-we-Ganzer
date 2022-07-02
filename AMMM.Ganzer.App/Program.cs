@@ -5,7 +5,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("GanzerDb") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
+var connectionString = Environment.GetEnvironmentVariable("DATABSE_String");
+if (string.IsNullOrEmpty(connectionString))
+{
+    connectionString = builder.Configuration.GetConnectionString("HerokuDb") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
+}
 
 
 // Add services to the container.
